@@ -1,8 +1,12 @@
 /**
+ * This is app component
  * 
+ * Along with putting app together, 
+ * you put your data store (Redux or some reactive thingy) and stuff like that here
  */
-import React from 'react';
+import React, { PropTypes } from 'react';
 import {Route, Router, hashHistory} from 'react-router';
+import { Provider } from 'react-redux';
 /**
 * hashHistory is used instead of browserHistory for practical reasons
 * hashHistory has uglyer look to it (routes have /#/ prefix, but this routing works in basic setup, 
@@ -16,16 +20,17 @@ import Home from "./pages/home";
 import About from "./pages/about";
 
 
-class App extends React.Component {
-    render() {
-        return (
-            <Router history={ hashHistory }>
-                <Route path="/" component={ Home }></Route>
-                <Route path="/about" component={ About }></Route>
-            </Router>
-                
+const App = ({ store }) => (
+            <Provider store={store}>
+                <Router history={ hashHistory }>
+                    <Route path="/" component={ Home }></Route>
+                    <Route path="/about" component={ About }></Route>
+                </Router>
+            </Provider>    
         );
-    }
-}
 
-export default React.createFactory(App);
+App.propTypes = {
+  store: PropTypes.object.isRequired,
+};
+
+export default App;

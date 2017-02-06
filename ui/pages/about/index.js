@@ -8,18 +8,14 @@ class About extends React.Component{
         super(props);
         this.view = aboutView;
 		this.state = {};
-
+        console.log(this.props);
     }
-
+    componentDidUpdate() {
+        console.log(this.props)
+    }
     render() {
         return this.view();
     }
 }
 
-/**
-*  Exporting a factory because it is a prefared way of calling react element
-*
-*  Also, directly calling react component when parsing to string (for server side rendering)
-*  causes an error
-*/
-export default React.createFactory(About);
+export default About;

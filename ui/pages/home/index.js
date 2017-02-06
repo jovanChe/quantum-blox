@@ -16,10 +16,4 @@ class Home extends React.Component{
     }
 }
 
-/**
-*  Exporting a factory because it is a prefared way of calling react element
-*
-*  Also, directly calling react component when parsing to string (for server side rendering)
-*  causes an error
-*/
-export default React.createFactory(Home);
+export default Home;
